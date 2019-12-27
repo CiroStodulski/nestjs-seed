@@ -3,4 +3,4 @@ node_js:
   - '11'
 script:
   - npm i
-  - run coveralls
+  - npm run coveralls
