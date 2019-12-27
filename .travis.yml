@@ -3,4 +3,5 @@ node_js:
   - '11'
 script:
   - npm i
+  - touch .env
   - npm run test:cov
