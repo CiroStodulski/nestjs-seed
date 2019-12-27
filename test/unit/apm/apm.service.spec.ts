@@ -1,8 +1,7 @@
 import { ApmService } from 'src/apm/apm.service';
 import { TestingModule, Test } from '@nestjs/testing';
-import { HttpService, HttpModule } from '@nestjs/common';
-import { ConfigModule } from 'src/config/config.module';
 import elasticApmNode from 'elastic-apm-node';
+import { ConfigModule } from 'src/config/config.module';
 
 describe('ApmService', () => {
   let service: ApmService;
