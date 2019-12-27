@@ -3,4 +3,19 @@ node_js:
   - '11'
 script:
   - npm i
-  - npm run coveralls
+before_install:
+    - export CHROME_BIN=chromium-browser
+    - export JSONPLACEHOLDER_URL=https://jsonplaceholder.typicode.com
+    - export JSONPLACEHOLDER_TIMEOUT=5000
+    - export TYPEORM_CONNECTION=mysql
+    - export TYPEORM_USERNAME=root
+    - export TYPEORM_PASSWORD=
+    - export TYPEORM_HOST=localhost
+    - export TYPEORM_PORT=3306
+    - export TYPEORM_DATABASE=nestjs_seed
+    - export TYPEORM_MIGRATIONS=migration/*.ts
+    - export TYPEORM_MIGRATIONS_DIR=migration
+    - export APM_SERVICE_NAME=
+    - export APM_SERVICE_URL=
+
+after_success: 'npm run coveralls'
