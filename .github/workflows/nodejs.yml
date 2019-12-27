@@ -18,23 +18,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: npm install, build, and test
-      env:
-        NODE_ENV: development
-        JSONPLACEHOLDER_URL: https://jsonplaceholder.typicode.com
-        JSONPLACEHOLDER_TIMEOUT: 5000
-        TYPEORM_CONNECTION: mysql
-        TYPEORM_USERNAME: root
-        TYPEORM_PASSWORD: 
-        TYPEORM_HOST: localhost
-        TYPEORM_PORT: 3306
-        TYPEORM_DATABASE: nestjs_seed
-        TYPEORM_MIGRATIONS: migration/*.ts
-        TYPEORM_MIGRATIONS_DIR: migration
-        APM_SERVICE_NAME: 
-        APM_SERVICE_URL:
-        CI: true    
       run: |
-        touch .env
-        npm ci
+        echo -e "NODE_ENV=development\nJSONPLACEHOLDER_URL=https://jsonplaceholder.typicode.com\nJSONPLACEHOLDER_TIMEOUT=5000\nTYPEORM_CONNECTION=mysql\nTYPEORM_USERNAME=root\nTYPEORM_PASSWORD=\nTYPEORM_HOST=localhost\nTYPEORM_PORT=3306\nTYPEORM_DATABASE=nestjs_seed\nTYPEORM_MIGRATIONS='migration\*.ts'\nTYPEORM_MIGRATIONS_DIR=migration\nAPM_SERVICE_NAME=\nAPM_SERVICE_URL=" >> new_file.txt        npm ci
         npm run build --if-present
         npm run test:cov
+      env:
+        CI: true    
